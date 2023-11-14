@@ -1,0 +1,40 @@
+.listWrapper {
+    max-height:200px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    box-shadow: 0 1px 5px 0 gray;
+    border-radius: 10px;
+    overflow-y:scroll;
+    list-style-type: none;
+}
+
+.ul-item{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.li-item{
+    display: block;
+    margin: 5px;
+    float: left;
+}
+
+.button-item{
+    display: flex;
+    justify-content: flex-start;
+    /* margin: 5px; */
+    width: 100%;
+}
+
+.main-page{
+    width: 500px;
+    background-color: 	rgb(179, 174, 174);
+    border-radius: 10px;
+}
+
+.table{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}

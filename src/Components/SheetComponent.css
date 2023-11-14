@@ -1,0 +1,98 @@
+.cell {
+    border: 1px solid black;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.cell-selected {
+    border: 1px solid rgb(223, 11, 11);
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #908a17;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.cell-editing {
+    border: 1px solid rgb(223, 11, 11);
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: blue;
+    color: yellow;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.cell-locked {
+    border: 1px solid yellow;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: courier;
+    background-color: #ff8551;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    z-index: 1;
+}
+
+.user-label {
+    position: absolute;
+    bottom: 70%; 
+    left: 50%; 
+    transform: translateX(-50%);
+    background-color: #219ecf;
+    color: white;
+    padding: 2px 8px;
+    font-size: 9px;
+    border-radius: 3px;
+    z-index: 2; 
+    white-space: nowrap; 
+}
+
+
+td {
+    /* padding-left: 10px;
+    padding-right: 10px; */
+    border-spacing: 10px 0;
+    padding-top: 9px;
+}
+
+table {
+    padding-bottom: 15px;
+}
