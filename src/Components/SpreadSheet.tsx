@@ -4,6 +4,7 @@ import Status from "./Status";
 import KeyPad from "./KeyPad";
 import SpreadSheetClient from "../Engine/SpreadSheetClient";
 import SheetHolder from "./SheetHolder";
+import Chat from "./Chat";
 
 import { ButtonNames } from "../Engine/GlobalDefinitions";
 import ServerSelector from "./ServerSelector";
@@ -171,6 +172,8 @@ function SpreadSheet({ userName, documentName ,resetURL }: SpreadSheetProps) {
       <button onClick={() => resetURL('files')
         }>Return to File Browser</button>
       <ServerSelector serverSelector={serverSelector} serverSelected={serverSelected} />
+      <Chat name={documentName} userName={userName} />
+      <h1>euwfnirasnfoainfioaefan</h1>
     </div>
   )
 };
