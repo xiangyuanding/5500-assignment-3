@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as path from 'path';
+import "./Chat.css";
 
 interface ChatProps {
   name: string;
@@ -9,8 +10,9 @@ interface ChatProps {
 function Chat({name, userName}:ChatProps) {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
+  const [pointer, setPointer] = useState(20);
 
-    // Function to send message to backend
+  // Function to send message to backend
   const sendMessage = async () => {
     if (inputMessage) {
       await fetch('http://localhost:3005/dialog/'+name, {
@@ -26,7 +28,7 @@ function Chat({name, userName}:ChatProps) {
 
   // Function to fetch messages from backend
   const fetchMessages = async () => {
-      const response = await fetch('http://localhost:3005/dialog/'+name,{
+      const response = await fetch('http://localhost:3005/dialog/'+name+"/"+pointer.toString(),{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -38,18 +40,34 @@ function Chat({name, userName}:ChatProps) {
       setMessages(responseData.dialog);
   };
 
+  // Function to convert timestamp to time
+  const toTime=(timestamp:string)=> {
+    let date = new Date(timestamp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const year = date.getFullYear();
+    const day = date.getDay();
+    const month = date.getMonth();
+    return day+"/"+month+"/"+year + "  " + hours + ":" + minutes + ":" + seconds;
+  };
+
     // Fetch messages periodically
     useEffect(() => {
-        const interval = setInterval(fetchMessages, 500); // Fetch messages every 5 seconds
-        return () => clearInterval(interval);
-    }, []);
+      const intervalId = setInterval(fetchMessages,500)
+      return () => clearInterval(intervalId);
+    }, [pointer]);
 
     return (
 
       <div className='chat-container'>
         <div className='chat-messages'>
+          <button onClick={()=>setPointer(pointer+10)}>Load more</button>
           {messages.map(dialog => (
-            <div>{dialog["sender"]+":"+dialog["text"]}</div>
+            <div className='chat-item'>
+              <div className='chat-time'>{toTime(dialog["timestamp"])}</div>
+              <div className='chat-content'>{dialog["sender"]+": "+dialog["text"]}</div>
+            </div>
           ))}
         </div>
         <div className='chat-input'>
