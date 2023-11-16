@@ -3,7 +3,7 @@ import * as path from 'path';
 import { SpreadSheetController } from "./SpreadSheetController";
 import { create } from 'domain';
 
-
+// DialogHolder is responsible for managing the dialogs
 export class DialogHolder {
 
     private _dialogFolder: string;
@@ -14,13 +14,14 @@ export class DialogHolder {
         this._initializeDialogDirectory();
     }
 
-
+    // initialize the directory where we will store the dialogs
     private _initializeDialogDirectory(): void {
         if (!fs.existsSync(this._dialogFolder)) {
             fs.mkdirSync(this._dialogFolder, { recursive: true });
         }
     }
 
+    // save the dialog to the file system
     public saveDialog(name: string, sender: string, text: string): void {
       console.log("saveDialog");
         const dialogPath = path.join(this._dialogFolder, name + '.json');
@@ -41,6 +42,7 @@ export class DialogHolder {
         fs.writeFileSync(dialogPath, dialogJSON);
     }
 
+    // create the dialog file if it does not exist
     public createDialog(name: string): boolean {
         if (fs.existsSync(path.join(this._dialogFolder, name + '.json'))) {
             return false
@@ -56,12 +58,13 @@ export class DialogHolder {
         return true;
     }
 
-    public getDialogs(name: string): string {
+    // get the dialogs based on the pointer
+    public getDialogs(name: string, pointer: number): string {
       this.createDialog(name);
       const dialogPath = path.join(this._dialogFolder, name + '.json');
       let dialogFile = fs.readFileSync(dialogPath, "utf8");
       let dialog = JSON.parse(dialogFile);
-      dialog.dialog = dialog.dialog.slice(-20);
+      dialog.dialog = dialog.dialog.slice(-pointer);
       const documentJSON = JSON.stringify(dialog);
       return documentJSON;
     }

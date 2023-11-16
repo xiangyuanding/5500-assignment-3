@@ -269,6 +269,7 @@ app.put('/document/clear/formula/:name', (req: express.Request, res: express.Res
     res.status(200).send(resultJSON);
 });
 
+// save the dialog
 app.put('/dialog/:name', (req: express.Request, res: express.Response) => {
     const name = req.params.name;
     const sender = req.body.sender;
@@ -277,9 +278,11 @@ app.put('/dialog/:name', (req: express.Request, res: express.Response) => {
     res.status(200).send("dialog saved");
 });
 
-app.get('/dialog/:name', (req: express.Request, res: express.Response) => {
+// GET pointer number of dialogs
+app.get('/dialog/:name/:pointer', (req: express.Request, res: express.Response) => {
     const name = req.params.name;
-    let result = dialogHolder.getDialogs(name)
+    const pointer = parseInt(req.params.pointer);
+    let result = dialogHolder.getDialogs(name, pointer)
     res.status(200).send(result);
 });
 
