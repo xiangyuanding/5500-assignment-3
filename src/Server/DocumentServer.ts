@@ -279,8 +279,8 @@ app.put('/dialog/:name', (req: express.Request, res: express.Response) => {
 
 app.get('/dialog/:name', (req: express.Request, res: express.Response) => {
     const name = req.params.name;
-    
-    res.status(200).send(dialogHolder.getDialogs(name));
+    let result = dialogHolder.getDialogs(name)
+    res.status(200).send(result);
 });
 
 // get the port we should be using

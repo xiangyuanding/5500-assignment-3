@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as path from 'path';
+import "./Chat.css";
 
 interface ChatProps {
   name: string;
@@ -9,6 +10,7 @@ interface ChatProps {
 function Chat({name, userName}:ChatProps) {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
+  const [pointer, setPointer] = useState(20);
 
     // Function to send message to backend
   const sendMessage = async () => {
@@ -38,6 +40,17 @@ function Chat({name, userName}:ChatProps) {
       setMessages(responseData.dialog);
   };
 
+  const toTime=(timestamp:string)=> {
+    let date = new Date(timestamp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const year = date.getFullYear();
+    const day = date.getDay();
+    const month = date.getMonth();
+    return day+"/"+month+"/"+year + "  " + hours + ":" + minutes + ":" + seconds;
+  };
+
     // Fetch messages periodically
     useEffect(() => {
         const interval = setInterval(fetchMessages, 500); // Fetch messages every 5 seconds
@@ -49,7 +62,10 @@ function Chat({name, userName}:ChatProps) {
       <div className='chat-container'>
         <div className='chat-messages'>
           {messages.map(dialog => (
-            <div>{dialog["sender"]+":"+dialog["text"]}</div>
+            <div className='chat-item'>
+              <div className='chat-time'>{toTime(dialog["timestamp"])}</div>
+              <div className='chat-content'>{dialog["sender"]+": "+dialog["text"]}</div>
+            </div>
           ))}
         </div>
         <div className='chat-input'>

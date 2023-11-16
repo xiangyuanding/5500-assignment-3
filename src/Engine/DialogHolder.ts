@@ -57,6 +57,7 @@ export class DialogHolder {
     }
 
     public getDialogs(name: string): string {
+      this.createDialog(name);
       const dialogPath = path.join(this._dialogFolder, name + '.json');
       let dialogFile = fs.readFileSync(dialogPath, "utf8");
       let dialog = JSON.parse(dialogFile);
