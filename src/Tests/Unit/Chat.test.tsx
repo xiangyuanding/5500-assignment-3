@@ -48,16 +48,16 @@ describe('Frond End test', () => {
     })
 
     it ('User can send the message and message correcly displayed with username and the text', async () => {
+        await new Promise(resolve => setTimeout(resolve, 1000));
         const userName = 'testUser';
         const sheetTestName = 'test' + 7;
         render(<Chat name={sheetTestName} userName = {userName}/>)
-        expect(screen.queryByText("testUser: I love 5500")).not.toBeInTheDocument();//message is not in chat window before sending the message
+        expect(screen.queryByText("testUser: I hate 5500")).not.toBeInTheDocument();//message is not in chat window before sending the message
         const placeholder = screen.getByPlaceholderText('Type a message...') as HTMLInputElement
-        fireEvent.change(placeholder,{target:{value:'I love 5500'}});
+        fireEvent.change(placeholder,{target:{value:'I hate 5500'}});
         const sendButton = screen.getByRole("button",{name:/Send/i});
         fireEvent.click(sendButton);//send the message
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        expect(await screen.findByText("testUser: I love 5500")).toBeInTheDocument;//message is now in the chat window
+        expect(await screen.findByText("testUser: I hate 5500")).toBeInTheDocument;//message is now in the chat window
     })
 
     it ('User cannot send blank message', async () => {
