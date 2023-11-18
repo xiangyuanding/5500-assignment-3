@@ -9,7 +9,7 @@ import "./FileSelector.css";
 const port = PortsGlobal.serverPort;
 
 const hostname = window.location.hostname;
-const baseURL = `http://${hostname}:${port}`;
+const baseURL = `https://${hostname}:${port}`;
 
 // include a function to call with a document name to modify the URL
 interface FileSelectorProps {
