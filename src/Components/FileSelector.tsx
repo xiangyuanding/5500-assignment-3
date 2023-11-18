@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { PortsGlobal } from '../ServerDataDefinitions';
 import "./FileSelector.css";
+import { RENDER_SERVER_URL } from '../ServerDataDefinitions';
 
 // import the css file
 //import './ControlPlane.css';
@@ -9,7 +10,7 @@ import "./FileSelector.css";
 const port = PortsGlobal.serverPort;
 
 const hostname = window.location.hostname;
-const baseURL = `https://${hostname}:${port}`;
+const baseURL = `http://${hostname}:${port}`;
 
 // include a function to call with a document name to modify the URL
 interface FileSelectorProps {
@@ -23,7 +24,7 @@ export function FileSelector({ userName,resetURL }: FileSelectorProps) {
     const [newFileName, setNewFileName] = useState<string>('');
 
     const getDocuments = useCallback(() => {
-        const requestURL = baseURL + "/documents"
+        const requestURL = RENDER_SERVER_URL + "/documents"
 
 
         fetch(requestURL)
