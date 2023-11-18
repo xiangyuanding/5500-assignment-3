@@ -22,9 +22,7 @@ describe('DialogHolder', () => {
         it('should create a dialog holder', () => {
             const dialogHolder = new DialogHolder();
             // the document should be in the right folder
-
             const result = fs.existsSync(dialogTestPathFull);
-
             expect(result).toBeTruthy();
 
         });
@@ -48,7 +46,7 @@ describe('DialogHolder', () => {
             const message  = 'Hello';
             dialogHolder.createDialog(sheetTestName);//document name is test1
             dialogHolder.saveDialog(sheetTestName,userName,message);
-            const documentJSON = dialogHolder.getDialogs(sheetTestName);
+            const documentJSON = dialogHolder.getDialogs(sheetTestName,20);
             // unpack the JSON
             const document = JSON.parse(documentJSON);
             expect(document.dialog[0].sender).toEqual('testUser');
@@ -69,7 +67,7 @@ describe('DialogHolder', () => {
             dialogHolder.saveDialog(sheetTestName,firstUser,messageFirst);
             dialogHolder.saveDialog(sheetTestName,secondUser,messageSecond);
             dialogHolder.saveDialog(sheetTestName,thirdUser,messageThird);
-            const documentJSON = dialogHolder.getDialogs(sheetTestName);
+            const documentJSON = dialogHolder.getDialogs(sheetTestName,20);
             // unpack the JSON
             const document = JSON.parse(documentJSON);
             expect(document.dialog[0].sender).toEqual('firstUser');

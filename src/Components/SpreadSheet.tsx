@@ -160,7 +160,7 @@ function SpreadSheet({ userName, documentName ,resetURL }: SpreadSheetProps) {
     <div>
       <Formula formulaString={formulaString} resultString={resultString}  ></Formula>
       <Status statusString={statusString}></Status>
-      {userName? <h3> You are currently logged in as {userName}</h3> : <h3> You are currently not logined, document cannot be edited and saved.</h3>}
+      {userName? <h3 style={{ overflowWrap: 'break-word', maxWidth: '1000px' }}> You are currently logged in as {userName}</h3> : <h3> You are currently not logined, document cannot be edited and saved.</h3>}
       {<SheetHolder cellsValues={cells}
         onClick={onCellClick}
         currentCell={currentCell}

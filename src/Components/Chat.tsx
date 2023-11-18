@@ -59,12 +59,11 @@ function Chat({name, userName}:ChatProps) {
     }, [pointer]);
 
     return (
-
       <div className='chat-container'>
         <div className='chat-messages'>
           <button onClick={()=>setPointer(pointer+10)}>Load more</button>
-          {messages.map(dialog => (
-            <div className='chat-item'>
+          {messages.map((dialog,index) => (
+            <div key = {index} className='chat-item'>
               <div className='chat-time'>{toTime(dialog["timestamp"])}</div>
               <div className='chat-content'>{dialog["sender"]+": "+dialog["text"]}</div>
             </div>

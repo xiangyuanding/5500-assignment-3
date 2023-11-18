@@ -67,6 +67,7 @@ function App() {
     window.history.pushState({}, '', newURL);
     // now reload the page
     window.location.reload();
+    if (documentName==='files') window.sessionStorage.setItem('userName', "");
   }
 
   if (documentName === '') {
@@ -100,13 +101,12 @@ function App() {
       <input
         type="text"
         placeholder="User name"
-        defaultValue={userName}
-        onChange={(event) => {
+        onChange={e => {
           // get the text from the input
-          let userName = event.target.value;
-          window.sessionStorage.setItem('userName', userName);
+          window.sessionStorage.setItem('userName', e.target.value);
+          console.log(e.target.value);
           // set the user name
-          setUserName(userName);
+          setUserName(e.target.value);
         }} />
     </div>
 
