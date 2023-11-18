@@ -1,6 +1,7 @@
 import { render, screen, fireEvent,cleanup,waitFor} from "@testing-library/react";
 import fs from 'fs';
 import path from 'path';
+import { promises } from "stream";
 
 import Chat from '../../Components/Chat';
 import FileSelector from "../../Components/FileSelector"
@@ -18,6 +19,7 @@ beforeAll(() => {
     dialogHolder = new DialogHolder();
 
 });
+beforeEach(async ()=> await Promise.resolve());
 
 
 describe('Frond End test', () => {
@@ -54,7 +56,7 @@ describe('Frond End test', () => {
         fireEvent.change(placeholder,{target:{value:'I love 5500'}});
         const sendButton = screen.getByRole("button",{name:/Send/i});
         fireEvent.click(sendButton);//send the message
-       
+        await new Promise(resolve => setTimeout(resolve, 3000));
         expect(await screen.findByText("testUser: I love 5500")).toBeInTheDocument;//message is now in the chat window
     })
 

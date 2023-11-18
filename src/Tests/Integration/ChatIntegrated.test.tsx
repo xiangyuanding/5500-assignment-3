@@ -25,6 +25,7 @@ describe('Testing backend to front end', ()=> {
         const userName = 'testUser';
         const message  = 'Test to read message created by backend';
         dialogHolder.createDialog(sheetTestName);
+        await new Promise(resolve => setTimeout(resolve, 2000));
         dialogHolder.saveDialog(sheetTestName,userName,message);
        
         const documentJSON = dialogHolder.getDialogs(sheetTestName,20);
