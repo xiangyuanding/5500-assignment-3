@@ -16,7 +16,7 @@ function Chat({name, userName}:ChatProps) {
   // Function to send message to backend
   const sendMessage = async () => {
     if (inputMessage) {
-      await fetch(RENDER_SERVER_URL+'/'+name, {
+      await fetch(RENDER_SERVER_URL+'/dialog/'+name, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ function Chat({name, userName}:ChatProps) {
 
   // Function to fetch messages from backend
   const fetchMessages = async () => {
-      const response = await fetch(RENDER_SERVER_URL+'/'+name+"/"+pointer.toString(),{
+      const response = await fetch(RENDER_SERVER_URL+'/dialog/'+name+"/"+pointer.toString(),{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
