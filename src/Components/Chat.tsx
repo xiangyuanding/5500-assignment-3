@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as path from 'path';
 import "./Chat.css";
+import { RENDER_SERVER_URL } from "../ServerDataDefinitions";
 
 interface ChatProps {
   name: string;
@@ -15,7 +16,7 @@ function Chat({name, userName}:ChatProps) {
   // Function to send message to backend
   const sendMessage = async () => {
     if (inputMessage) {
-      await fetch('http://localhost:3005/dialog/'+name, {
+      await fetch(RENDER_SERVER_URL+'/'+name, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +29,7 @@ function Chat({name, userName}:ChatProps) {
 
   // Function to fetch messages from backend
   const fetchMessages = async () => {
-      const response = await fetch('http://localhost:3005/dialog/'+name+"/"+pointer.toString(),{
+      const response = await fetch(RENDER_SERVER_URL+'/'+name+"/"+pointer.toString(),{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
