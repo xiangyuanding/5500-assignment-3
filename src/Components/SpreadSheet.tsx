@@ -34,6 +34,8 @@ function SpreadSheet({ userName, documentName ,resetURL }: SpreadSheetProps) {
   const [currentlyEditing, setCurrentlyEditing] = useState(spreadSheetClient.getEditStatus());
   const [cellsBeingEdited, setCellsBeingEdited] = useState(spreadSheetClient.getCellsBeingEdited());
   const [serverSelected, setServerSelected] = useState("localhost");
+  const [zoomLevel, setZoomLevel] = useState(100);
+
 
 
   function updateDisplayValues(): void {
@@ -161,6 +163,8 @@ function SpreadSheet({ userName, documentName ,resetURL }: SpreadSheetProps) {
       <Formula formulaString={formulaString} resultString={resultString}  ></Formula>
       <Status statusString={statusString}></Status>
       {userName? <h3 style={{ overflowWrap: 'break-word', maxWidth: '1000px' }}> You are currently logged in as {userName}</h3> : <h3> You are currently not logined, document cannot be edited and saved.</h3>}
+      <div className="spreadsheet-layout">
+      <div className="spreadsheet-container">
       {<SheetHolder cellsValues={cells}
         onClick={onCellClick}
         currentCell={currentCell}
@@ -169,12 +173,21 @@ function SpreadSheet({ userName, documentName ,resetURL }: SpreadSheetProps) {
       <KeyPad onButtonClick={onButtonClick}
         onCommandButtonClick={onCommandButtonClick}
         currentlyEditing={currentlyEditing}></KeyPad>
-      <button onClick={() => resetURL('files')
+              <button onClick={() => resetURL('files')
         }>Return to File Browser</button>
       <ServerSelector serverSelector={serverSelector} serverSelected={serverSelected} />
+        </div>
       <div className="Chat">
-        <h1>Chat</h1>
+        <text>use below buttons to change the size</text>
+      <div>
+        <button onClick={() => setZoomLevel(120)}>Large</button>
+        <button onClick={() => setZoomLevel(100)}>Regular</button>
+      </div>
+      <div style={{ transform: `scale(${zoomLevel / 100})` }}>
+      <h1>Chat</h1>
         <Chat name={documentName} userName={userName} />
+      </div>
+      </div>
       </div>
     </div>
   )
