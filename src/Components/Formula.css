@@ -9,10 +9,17 @@
   * font is bold
   * font is courier
   */
+  :root {
+   /* formula_color is black */
+  --formula_color: white;
+  --formula-number-color: #039703;
+  }
+  
+
 .formula {
   background-color: #000000;
   border: 5px solid #121412;
-  color: #039703;
+  color: var(--formula-number-color);
   padding: 15px 32px;
   text-align: right;
   text-decoration: none;
@@ -34,4 +41,8 @@
   display: inline-block;
   font-family: courier;
   width: 250px;
+}
+
+.formula_color{
+  color: var(--formula_color);
 }

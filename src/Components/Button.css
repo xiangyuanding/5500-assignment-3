@@ -1,6 +1,10 @@
+:root{
+  --border-color: #000000;
+}
+
 .button-number {
   background-color: #514caf;
-  border: 5px solid #000000;
+  border: 5px solid var(--border-color);
   color: white;
   padding: 5px 5px;
   text-align: center;
@@ -13,7 +17,7 @@
 
 .button-operator {
   background-color: #512426;
-  border: 5px solid #000000;
+  border: 5px solid var(--border-color);
   color: white;
   padding: 5px 5px;
   text-align: center;
@@ -26,7 +30,7 @@
 
 .button-edit-end {
   background-color: #707070;
-  border: 5px solid #000000;
+  border: 5px solid var(--border-color);
   color: #ffffff;
   padding: 5px 5px;
   text-align: center;
@@ -39,7 +43,7 @@
 
 .button-edit-start {
   background-color: #707070;
-  border: 5px solid #000000;
+  border: 5px solid var(--border-color);
   color: white;
   padding: 5px 5px;
   text-align: center;
@@ -51,8 +55,8 @@
 }
 
 .button-control {
-  background-color: #000000;
-  border: 5px solid #000000;
+  background-color: #707070;
+  border: 5px solid var(--border-color);
   color: rgb(255, 255, 255);
   padding: 5px 5px;
   text-align: center;

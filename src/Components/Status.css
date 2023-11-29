@@ -1,0 +1,8 @@
+:root {
+    /* formula_color is black */
+   --status_name: white;
+   }
+
+   .status_name{
+    color: var(--status_name);
+   }

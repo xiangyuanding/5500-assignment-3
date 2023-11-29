@@ -1,7 +1,22 @@
+
+:root {
+  --h3-color: white; /* Default color */
+  
+
+}
+
 .Chat{
   position: absolute;
   max-width: 300px;
   max-height: 300px;
   top: 500px;
   right: 150px;
+}
+
+.h3-color{
+  color: var(--h3-color);
+}
+
+.chat-name-color{
+  color: var(--h3-color);
 }

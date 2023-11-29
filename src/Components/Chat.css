@@ -1,10 +1,13 @@
+:root{
+  --chat-color:#343841;
+}
 .chat-messages{
   display: flex;
   flex-direction: column;
   max-width: 300px;
   height: 250px;
   overflow: auto;
-  background-color: #343841;
+  background-color: var(--chat-color);
   align-items: flex-start;
 }
 
