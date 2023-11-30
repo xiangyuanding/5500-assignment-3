@@ -56,6 +56,7 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
   );
   const [serverSelected, setServerSelected] = useState("localhost");
   const [zoomLevel, setZoomLevel] = useState(100);
+  const [sheetZoomLevel, setSheetZoomLevel] = useState(90);
 
   function updateDisplayValues(): void {
     spreadSheetClient.userName = userName;
@@ -237,10 +238,16 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
   };
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', width: '100%'}}>
+    <div className="spreadsheet-layout" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 'auto', overflow: 'auto' }}>
       <div>
         <button onClick={handleButtonClick}>Change Background Color</button>
       </div>
+      <div className="">
+            <button onClick={() => setSheetZoomLevel(100)}>Larger</button>
+            <button onClick={() => setSheetZoomLevel(90)}>Regular</button>
+            <button onClick={() => setSheetZoomLevel(70)}>Smaller</button>
+          </div>
       <Formula
         formulaString={formulaString}
         resultString={resultString}
@@ -249,7 +256,7 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
       {userName ? (
         <h3
           className="h3-color"
-          style={{ overflowWrap: "break-word", maxWidth: "1000px" }}
+          style={{ overflowWrap: "break-word", maxWidth: "1500px", margin: "10px"}}
         >
           {" "}
           You are currently logged in as {userName}
@@ -260,8 +267,7 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
           You are currently not logined, document cannot be edited and saved.
         </h3>
       )}
-      <div className="spreadsheet-layout">
-        <div className="spreadsheet-container">
+        <div className="spreadsheet-container" style={{ transform: `scale(${sheetZoomLevel / 100})` }}>
           {
             <SheetHolder
               cellsValues={cells}
@@ -285,19 +291,21 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
             serverSelected={serverSelected}
           />
         </div>
-        <div className="Chat">
+        </div>
+        <div className="Chat" style={{ flex:1, width: '600px', overflow: 'auto' }}>
           <text className="chat-name-color">
             use below buttons to change the size
           </text>
-          <div>
+          <div className="chat-zoom-button">
             <button onClick={() => setZoomLevel(120)}>Large</button>
             <button onClick={() => setZoomLevel(100)}>Regular</button>
           </div>
-          <div style={{ transform: `scale(${zoomLevel / 100})` }}>
-            <h1 className="chat-name-color">Chat</h1>
-            <Chat name={documentName} userName={userName} />
+
+          <h1 className="chat-name-color">Chat</h1>
+            <div className="chat-box" style={{ transform: `scale(${zoomLevel / 100})` }}>
+            <Chat name={documentName} userName={userName}/>
           </div>
-        </div>
+
       </div>
     </div>
   );

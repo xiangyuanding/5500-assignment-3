@@ -1,22 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
-  --h3-color: white; /* Default color */
-  
-
+  /* --background-color: #1a1a1a; */
+  --primary-color: gray;
+  --text-color: #ffffff;
+  /* --chat-background: #333333; */
+  --button-background: gray;
+  --button-hover-background: #66bb6a;
+  --button-color: #ffffff;
 }
 
-.Chat{
-  position: absolute;
-  max-width: 300px;
-  max-height: 300px;
-  top: 500px;
-  right: 150px;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-.h3-color{
-  color: var(--h3-color);
+button {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.chat-name-color{
-  color: var(--h3-color);
+button:hover {
+  background-color: var(--button-hover-background);
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+}
+
+.spreadsheet-layout {
+  width: calc(100% - 1000px - 4px);
+  flex-grow: 1;
+  background-color: var(--chat-background);
+}
+
+.Chat {
+  flex-grow: 2; /* Give the chat more flex grow factor */
+  width: auto; /* Override the fixed width */
+  max-width: none; /* If there was a max-width, remove it */
+  padding: 20px;
+  background-color: var(--chat-background);
+  border-left: 4px solid var(--primary-color);
+  justify-items: center;
+}
+
+.chat-box {
+  flex-direction: column;
+  height: 100%;
+  margin-left: 20%;
+  margin-top: 80px;
+}
+
+.h3-color, .chat-name-color {
+  color: var(--primary-color);
+}
+
+.chat-zoom-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+input[type='text'] {
+  width: calc(100% - 90px);
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+}
+
+
+@media (max-width: 900px) {
+  .chat-container {
+    flex-direction: column;
+  }
+
+  .spreadsheet-layout, .Chat {
+    width: 100%;
+    overflow: auto;
+  }
+
+  .Chat {
+    order: 1;
+  }
+
+  .spreadsheet-layout {
+    order: 2;
+  }
 }

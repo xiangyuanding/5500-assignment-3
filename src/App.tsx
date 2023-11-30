@@ -100,7 +100,7 @@ function App() {
     return <div className='loginName'>
       <input
         type="text"
-        placeholder="User name"
+        placeholder="name"
         onChange={e => {
           // get the text from the input
           window.sessionStorage.setItem('userName', e.target.value);
@@ -117,7 +117,7 @@ function App() {
       <tbody>
         <tr className='loginTable'>
           <td>
-            <h2>Enter your name to login</h2>
+            <h2 style={{margin: "20px"}}>Enter name to login</h2>
           </td>
           <td>
             {getUserLogin()}

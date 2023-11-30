@@ -19,15 +19,15 @@ const Formula: React.FC<FormulaProps> = ({ formulaString, resultString }) => {
 
       <br />
       <div className="formula">
-        <span data-testid="FormulaValue">{formulaString} </span>
+        <div data-testid="FormulaValue" className="formula-string">{formulaString}</div>
       </div>
       <br />
       <span className="formula_color" data-testid="Result">Result</span>
       <br />
       <div className="formula">
-        <span data-testid="FormulaResult">
+        <div data-testid="FormulaResult" className="formula-string">
           {resultString}
-        </span>
+        </div>
       </div>
     </div>
   );

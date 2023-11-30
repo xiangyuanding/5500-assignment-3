@@ -1,40 +1,61 @@
 .listWrapper {
-    max-height:200px;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
+    max-height: 200px;
+    margin: 0 auto 5%;
     box-shadow: 0 1px 5px 0 gray;
     border-radius: 10px;
-    overflow-y:scroll;
+    overflow-y: scroll;
     list-style-type: none;
+    background-color: #fff; /* Assuming you want a light background for the list */
 }
 
-.ul-item{
-    list-style-type: none;
+.ul-item {
     padding: 0px;
+    margin: 0; /* Resets default margin */
 }
 
-.li-item{
-    display: block;
+.li-item {
+    display: flex; /* Changed from block to flex to handle inner content */
+    align-items: center; /* Vertically centers the content of the li */
     margin: 5px;
-    float: left;
+    width: calc(100% - 10px); /* Adjust width to account for margin */
+    background-color: #f9f9f9; /* Light background for list items */
+    border-radius: 5px; /* Slight rounding of corners for list items */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.button-item{
-    display: flex;
+.button-item {
     justify-content: flex-start;
-    /* margin: 5px; */
-    width: 100%;
+    padding: 10px; /* Padding inside the buttons for better touch target */
+    background-color: var(--button-background); /* Use the primary button color */
+    color: var(--button-color); /* Use the defined button text color */
+    border-radius: 5px; /* Consistency in border radius */
+    margin: 5px 0; /* Consistent vertical spacing */
+    border: none; /* Remove borders from buttons */
+    cursor: pointer; /* Hand cursor on hover for better UX */
+    transition: background-color 0.3s; /* Smooth transition for button background */
 }
 
-.main-page{
+.button-item:hover {
+    background-color: var(--button-hover-background); /* Lighten the button on hover */
+}
+
+.main-page {
     width: 500px;
-    background-color: 	rgb(179, 174, 174);
+    margin: 0 auto; /* Center the main page block */
+    background-color: #fff; /* Assuming a light background */
     border-radius: 10px;
+    padding: 20px; /* Space inside the main page */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* More pronounced shadow for the main page */
 }
 
-.table{
-    width: 500px;
-    display: flex;
-    justify-content: center;
+.table {
+    width: 100%; /* Full width to use all available space */
+    justify-content: space-around; /* Evenly distributes children with space around them */
+}
+
+/* Clear floats */
+.ul-item::after {
+    content: "";
+    display: table;
+    clear: both;
 }
