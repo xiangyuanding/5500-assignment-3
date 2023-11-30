@@ -207,7 +207,7 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
     //
     setChatBoxColor((prevChatBoxColor) => {
       const newChatBoxColor =
-        prevChatBoxColor === "#343841" ? "lightgreen" : "#343841";
+        prevChatBoxColor === "#343841" ? "#343841" : "#343841";
       document.documentElement.style.setProperty(
         "--chat-color",
         newChatBoxColor
