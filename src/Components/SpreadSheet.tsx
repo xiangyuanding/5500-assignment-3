@@ -241,12 +241,12 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
     <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', width: '100%'}}>
     <div className="spreadsheet-layout" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 'auto', overflow: 'auto' }}>
       <div>
-        <button onClick={handleButtonClick}>Change Background Color</button>
+        <button aria-label='change-background-color' onClick={handleButtonClick}>Change Background Color</button>
       </div>
       <div className="">
-            <button onClick={() => setSheetZoomLevel(100)}>Larger</button>
-            <button onClick={() => setSheetZoomLevel(90)}>Regular</button>
-            <button onClick={() => setSheetZoomLevel(70)}>Smaller</button>
+            <button aria-label='larger-sheet' onClick={() => setSheetZoomLevel(100)}>Larger</button>
+            <button aria-label='regular-sheet' onClick={() => setSheetZoomLevel(90)}>Regular</button>
+            <button aria-label='smaller-sheet' onClick={() => setSheetZoomLevel(70)}>Smaller</button>
           </div>
       <Formula
         formulaString={formulaString}
@@ -293,12 +293,12 @@ function SpreadSheet({ userName, documentName, resetURL }: SpreadSheetProps) {
         </div>
         </div>
         <div className="Chat" style={{ flex:1, width: '600px', overflow: 'auto' }}>
-          <text className="chat-name-color">
+          <div className="chat-name-color">
             use below buttons to change the size
-          </text>
+          </div>
           <div className="chat-zoom-button">
-            <button onClick={() => setZoomLevel(120)}>Large</button>
-            <button onClick={() => setZoomLevel(100)}>Regular</button>
+            <button aria-label='zoom-in' onClick={() => setZoomLevel(120)}>Large</button>
+            <button aria-label='zoom-out' onClick={() => setZoomLevel(100)}>Regular</button>
           </div>
 
           <h1 className="chat-name-color">Chat</h1>
